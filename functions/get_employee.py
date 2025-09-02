@@ -4,24 +4,15 @@ from dotenv import load_dotenv
 load_dotenv()
 CG_API_KEY = os.getenv("CG_API_KEY")
 
+api_url = 'https://dataapi.callgear.com/v2.0'
 
-api_url = 'https://callapi.callgear.com/v4.0'
-
-def start_call():
+def get_employees():
     request_data = {
-        "jsonrpc": "2.0",
-        "method": "start.employee_call",
-        "id": "req1",
-        "params": {
-            "access_token": CG_API_KEY,
-            "first_call": "employee",
-            "show_virtual_phone_number": False,
-            "virtual_phone_number": "97128160528",
-            #"direction": "in",
-            "contact": "971509267545",
-            "employee": {
-                "id": 814380
-            }
+        "jsonrpc":"2.0",
+        "id":"1",
+        "method":"get.employees",   
+        "params":{
+            "access_token": CG_API_KEY
         }
     }
 
@@ -43,5 +34,6 @@ def start_call():
         return False
 
 
+
 if __name__ == "__main__":
-    start_call()
+    get_employees()
